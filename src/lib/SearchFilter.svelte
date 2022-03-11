@@ -1,26 +1,64 @@
 <script>
 export let items;
-let search = '';
-
+export let search = '';
+let isFocused = false;
+import {fade} from 'svelte/transition';
 $:filteredSearch = items.filter((item) => {
   return search === '' || item.toLowerCase().indexOf(search.toLowerCase()) != -1;
 });
 </script>
 
-
+<div class="wrapper">
 <label>
     Search Names: <br/>
-    <input bind:value={search} type="text" placeholder="Search">
+    <input
+     on:focus={()=> (isFocused = true)}
+     bind:value={search}
+     type="text"
+     placeholder="Search">
 </label>
-<ul>
+{#if isFocused}
+<ul transition:fade={{duration:200}}>
     {#each filteredSearch as item}
-    <li>{item}</li>
+    <li
+    transition:fade={{duration:200}}
+    on:click={()=> {
+    search = item;
+    isFocused: false;
+    }}
+    >
+    {item}
+    </li>
     {/each}
 </ul>
-
+{/if}
+</div>
 
 <style>
-    li {
-        text-transform: capitalize;
-    }
+.wrapper {
+  position: relative;
+  display: inline-block;
+
+}
+
+ul {
+    position: absolute;
+    width: 100%;
+    border: solid 1px black;
+    list-style: none;
+    padding: 0;
+    margin:0
+
+}
+
+li {
+    padding:10px;
+    cursor: pointer;
+    transition: 0.3s background ease;
+
+}
+
+li:hover {
+    background-color: var(--listItembackground, #eee)
+}
 </style>

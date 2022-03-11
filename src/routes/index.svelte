@@ -9,19 +9,13 @@
         'Haizea',
         'rosarito',
     ]
+    let search = '';
 </script>
 
-<h1>Alessandro's Components</h1>
+<h1>Alessandro's Components {search}</h1>
 
-<SearchFilter {items} />
-<!-- <BetterAccordion isOpen={true} buttonText = "Do I need it?" >
-<div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum fugit tenetur deserunt nemo minus dolorum, quaerat ad quae. Aperiam doloremque veniam in quisquam laudantium.</p>
-</div>
-</BetterAccordion> -->
-<!-- <Toggle bind:isToggled label="Beta User" />
-<Toggle bind:isToggled label="Beta User" style="--toggle-background-color:red"/>
- -->
+<SearchFilter {items} bind:search/>
+
 {#if isToggled}
 <h1>I'm Toggled!</h1>
 {/if}
