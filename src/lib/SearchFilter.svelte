@@ -55,6 +55,7 @@ li {
     padding:10px;
     cursor: pointer;
     transition: 0.3s background ease;
+    text-transform: capitalize;
 
 }
 
