@@ -1,6 +1,7 @@
 <script>
    import SearchFilter from "$lib/SearchFilter.svelte";
    import Field from "$lib/Field.svelte";
+   import Markdown from "$lib/Markdown.svelte";
     let isToggled = false;
     let items = [
         'Alessandro',
@@ -14,6 +15,8 @@
 </script>
 
 <h1>Alessandro's Components {search}</h1>
+
+<Markdown />
 
 <Field bind:value={search} label="Search" instructions="Type to search" placeholder="Ale" />
 <Field value=0 label="Number" type="number"  />
